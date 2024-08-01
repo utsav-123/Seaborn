@@ -1,0 +1,19 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+fig, ax1 = plt.subplots()
+
+df = pd.read_excel("C:\\Users\\Dell\\Outlet Hydrograph.xlsx", 'Sheet1')
+print(df)
+
+sns.lineplot(data = df, x = "min", y = '10 m', color  = "orange", label= 'Sc-1 (10m)').set(xlabel = 'Time (minutes)', ylabel = 'Discharge(m³/s)')
+sns.lineplot(data = df, x = "min", y = '30 m', color  = "green", label = 'Sc-2 (30m)')
+sns.lineplot(data = df, x = "min", y = '50 m', color  = "blue", label = 'Sc-3 (50m)')
+
+plt.legend()
+plt.show()
+ 
+fig.tight_layout()
+fig.savefig("Outlet Hydrograph2.jpg")
