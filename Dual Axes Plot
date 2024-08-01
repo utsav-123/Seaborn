@@ -1,0 +1,24 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+fig, ax1 = plt.subplots()
+data = { 'Years': [1988, 1994, 2005, 2013, 2023],
+'Area1' : [26.1986, 22.9703, 22.6542, 22.2402, 21.6928],
+'Area2' : [0.0898, 0.1015, 0.2179, 0.2629, 0.2345]  }
+df = pd.DataFrame (data)
+
+sns.lineplot(data = df, x = 'Years', y = 'Area1', color = "green", marker = "*", markersize = 12, label= "Area of Glacier").set(xlabel = 'Years', ylabel = 'Area of Glacier (km²)')
+ax2 = ax1.twinx()
+sns.lineplot(data = df, x ='Years', y = 'Area2', color = "blue", ax = ax2,  marker = "o", markersize = 7, label = "Area of Lake").set(xlabel = 'Years', ylabel = 'Area of Lake (km²)')
+
+ax1.set_ylim(20,29)
+ax2.set_ylim(0.05,0.3)
+ax1.set_xlim(1986, 2026)
+
+ax1.legend(loc = "upper left",bbox_to_anchor=(0, 1))
+ax2.legend(loc = "upper right",bbox_to_anchor=(0, 0.5))
+
+plt.legend()
+plt.show ()
